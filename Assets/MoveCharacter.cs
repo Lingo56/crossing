@@ -8,21 +8,17 @@ public class MoveCharacter : MonoBehaviour
 
     void Start()
     {
-        // Optionally, get the Rigidbody2D component if not assigned in Inspector
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        //moveDirection = new Vector2(-1.0f, -1.0f).normalized;
-        Debug.Log("Move Direction: " + moveDirection);
+        moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 
     void FixedUpdate()
     {
-        // Move the character based on input
         rb.linearVelocity = moveDirection * speed;
     }
 }
