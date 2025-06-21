@@ -3,8 +3,12 @@ using UnityEngine;
 public class MoveCharacter : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     public float speed = 5f;
     private Vector2 moveDirection;
+
 
     void Start()
     {
@@ -15,6 +19,12 @@ public class MoveCharacter : MonoBehaviour
     void Update()
     {
         moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+
+        if (moveDirection.x > 0.01f)
+            spriteRenderer.flipX = false;
+        else if (moveDirection.x < -0.01f)
+            spriteRenderer.flipX = true;
     }
 
     void FixedUpdate()
