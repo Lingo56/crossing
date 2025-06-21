@@ -8,6 +8,7 @@ public class MoveCharacter : MonoBehaviour
 
     public float speed = 5f;
     private Vector2 moveDirection;
+    public bool isFishing = false;
 
 
     void Start()
@@ -18,6 +19,12 @@ public class MoveCharacter : MonoBehaviour
 
     void Update()
     {
+        if (isFishing)
+        {
+            rb.linearVelocity = Vector2.zero;
+            animator.SetFloat("Speed", 0f);
+            return;
+        }
         moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
@@ -29,6 +36,9 @@ public class MoveCharacter : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = moveDirection * speed;
+        if (!isFishing)
+            rb.linearVelocity = moveDirection * speed;
+        else
+            rb.linearVelocity = Vector2.zero;
     }
 }
