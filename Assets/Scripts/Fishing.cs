@@ -9,6 +9,7 @@ public class Fishing : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
     private bool nearWater = false;
+    private bool fishingInProgress = false;
     private int score = 0;
     private AudioSource[] audioSources;
 
@@ -20,7 +21,7 @@ public class Fishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearWater && Input.GetKeyDown(KeyCode.E))
+        if (nearWater && fishingInProgress && Input.GetKeyDown(KeyCode.E))
         {
             StartFishing();
         }
@@ -45,6 +46,8 @@ public class Fishing : MonoBehaviour
     void StartFishing()
     {
         Debug.Log("Fishing started!");
+
+        fishingInProgress = true;
 
         // Show fishing rod and icon
         if (fishingRod != null)
@@ -77,7 +80,7 @@ public class Fishing : MonoBehaviour
 
         // Show fish icon
         if (fishIcon != null)
-        { 
+        {
             audioSources[1].Play();
             fishIcon.SetActive(true);
         }
@@ -91,5 +94,7 @@ public class Fishing : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         if (fishIcon != null)
             fishIcon.SetActive(false);
+
+        fishingInProgress = false;
     }
 }
