@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Xml.Serialization;
 
 public class Fishing : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class Fishing : MonoBehaviour
 
     private bool nearWater = false;
     private int score = 0;
+    private AudioSource[] audioSources;
+
+    void Start()
+    {
+        audioSources = GetComponents<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,7 +48,10 @@ public class Fishing : MonoBehaviour
 
         // Show fishing rod and icon
         if (fishingRod != null)
+        {
+            audioSources[0].Play();
             fishingRod.SetActive(true);
+        }
 
         // Stop player movement
         MoveCharacter moveChar = GetComponent<MoveCharacter>();
@@ -67,7 +77,10 @@ public class Fishing : MonoBehaviour
 
         // Show fish icon
         if (fishIcon != null)
+        { 
+            audioSources[1].Play();
             fishIcon.SetActive(true);
+        }
 
         // Allow player movement again
         MoveCharacter moveChar = GetComponent<MoveCharacter>();
