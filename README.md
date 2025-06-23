@@ -1,6 +1,6 @@
 # Crossing
 
-An Animal Crossing clone made for teaching Unity!
+A fishing game made for teaching Unity!
 
 ## Assets Used
 
