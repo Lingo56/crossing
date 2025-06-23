@@ -1,6 +1,6 @@
 # Crossing
 
-A fishing game made for teaching Unity!
+Animal Crossing-like fishing game for teaching Unity!
 
 ## Assets Used
 
