@@ -21,10 +21,7 @@ public class Fishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearWater && fishingInProgress && Input.GetKeyDown(KeyCode.E))
-        {
-            StartFishing();
-        }
+        /* OH NO! MISSING CODE! */
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -52,7 +49,10 @@ public class Fishing : MonoBehaviour
         // Show fishing rod and icon
         if (fishingRod != null)
         {
-            audioSources[0].Play();
+            if (audioSources.Length > 0)
+            {
+                audioSources[0].Play();
+            }
             fishingRod.SetActive(true);
         }
 
@@ -81,7 +81,10 @@ public class Fishing : MonoBehaviour
         // Show fish icon
         if (fishIcon != null)
         {
-            audioSources[1].Play();
+            if (audioSources.Length > 1)
+            {
+                audioSources[1].Play();
+            }
             fishIcon.SetActive(true);
         }
 

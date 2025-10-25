@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CompletedScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Template.unity
+    guid: f593ccd8eac926a4695b33d92046d4f6
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
